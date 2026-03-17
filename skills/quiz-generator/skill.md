@@ -1,3 +1,8 @@
+---
+name: quiz-generator
+description: Use when converting an existing test, quiz, PDF, image, or text file into a .quiz file. Triggers when the user wants to import or transcribe a quiz from source material.
+---
+
 # Quiz Generator
 
 Convert an existing test or quiz into a `.quiz` file. Transcribe all content **verbatim** — no rephrasing, no new questions, no edits of any kind.
