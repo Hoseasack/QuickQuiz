@@ -4,7 +4,7 @@
  * parseQuiz(text) — Parse a .quiz file into a JSON object.
  *
  * @param {string} text - Raw contents of a .quiz file
- * @returns {{ title: string, description: string, questions: Array }}
+ * @returns {{ title: string, description: string, warning: string|null, questions: Array }}
  * @throws {Error} Descriptive error message for malformed input
  */
 function parseQuiz(text) {
