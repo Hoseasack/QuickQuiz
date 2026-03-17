@@ -177,3 +177,52 @@ function updateSubmitState() {
   });
   submitBtn.disabled = !allAnswered;
 }
+
+// ── Scoring ───────────────────────────────────────────────────────────────────
+quizForm.addEventListener('submit', e => {
+  e.preventDefault();
+  scoreQuiz();
+});
+
+function scoreQuiz() {
+  // Lock all inputs
+  quizForm.querySelectorAll('input').forEach(i => { i.disabled = true; });
+
+  let correct = 0;
+  questionList.querySelectorAll('.question').forEach(qEl => {
+    if (scoreQuestion(qEl)) correct++;
+  });
+
+  const total = quizData.questions.length;
+  const pct = Math.round((correct / total) * 100);
+  scoreBanner.textContent = `${correct} / ${total} correct (${pct}%)`;
+  if (correct === total) scoreBanner.classList.add('score-banner--perfect');
+  scoreBanner.hidden = false;
+
+  submitBtn.hidden = true;
+  retakeBtn.hidden = false;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function scoreQuestion(qEl) {
+  const inputs = Array.from(qEl.querySelectorAll('input'));
+  // Correct if every input's checked state matches its correct flag
+  const allMatch = inputs.every(input => input.checked === (input.dataset.correct === 'true'));
+
+  qEl.classList.remove('unanswered');
+  if (allMatch) {
+    qEl.classList.add('question--correct');
+  } else {
+    qEl.classList.add('question--incorrect');
+    inputs.forEach(input => {
+      const label = input.closest('label');
+      if (input.dataset.correct === 'true') {
+        label.classList.add('answer--correct');
+      } else if (input.checked) {
+        label.classList.add('answer--wrong');
+      }
+    });
+  }
+  return allMatch;
+}
