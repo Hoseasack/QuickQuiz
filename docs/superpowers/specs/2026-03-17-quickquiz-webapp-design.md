@@ -45,8 +45,8 @@ The parser stays server-side. The browser only handles rendering and interaction
 ## API
 
 ### `POST /api/quiz`
-- **Request:** `multipart/form-data` with one field `file` containing the `.quiz` file
-- **Response 200:** `{ title, description, warning?, questions: [{ id, type, text, answers: [{ text, correct }] }] }`
+- **Request:** `Content-Type: text/plain` with raw `.quiz` file text as the body
+- **Response 200:** `{ title, description, warning, questions: [{ id, type, text, answers: [{ text, correct }] }] }` (`warning` is `null` if absent)
 - **Response 400:** `{ error: "<parser error message>" }`
 
 ---
