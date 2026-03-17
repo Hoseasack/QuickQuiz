@@ -226,3 +226,9 @@ function scoreQuestion(qEl) {
   }
   return allMatch;
 }
+
+// ── Retake ────────────────────────────────────────────────────────────────────
+retakeBtn.addEventListener('click', () => {
+  renderOrder = shuffle(renderOrder); // re-shuffle question order
+  renderQuiz();                       // renderQuiz also shuffles answers per question
+});
