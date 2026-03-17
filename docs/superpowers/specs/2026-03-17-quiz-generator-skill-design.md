@@ -59,7 +59,7 @@ A Claude Code superpowers skill that converts existing tests and quizzes into `.
      → Prompt user:
          "No answer key found. Would you like to:
           A) Upload an answer key file
-          B) Use Claude-generated answers (a warning will be added to the quiz)"
+          B) Use Claude-generated answers"
      → User picks A: read answer key file, match answers, write .quiz
      → User picks B: Claude generates answers, adds warning: field, writes .quiz
 6. Save to quizzes/<filename>.quiz
