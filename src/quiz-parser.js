@@ -28,6 +28,7 @@ function parseQuiz(text) {
 
   // ── 2. Collect preamble lines (between title and first ---) ───────────────
   let description = '';
+  let warning = null;
   let bodyStartIndex = titleLineIndex + 1;
 
   for (let i = titleLineIndex + 1; i < rawLines.length; i++) {
@@ -38,6 +39,9 @@ function parseQuiz(text) {
     }
     if (trimmed.startsWith('description:')) {
       description = trimmed.slice('description:'.length).trim();
+    }
+    if (trimmed.startsWith('warning:')) {
+      warning = trimmed.slice('warning:'.length).trim();
     }
     // other preamble lines (blank or unknown metadata) are ignored
   }
@@ -129,7 +133,7 @@ function parseQuiz(text) {
     throw new Error('No questions found in file');
   }
 
-  return { title, description, questions };
+  return { title, description, warning, questions };
 }
 
 module.exports = { parseQuiz };
