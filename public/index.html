@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickQuiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- Drop zone: shown when no quiz is loaded -->
+    <div id="drop-zone">
+      <p class="drop-zone__heading">Drop a <code>.quiz</code> file here</p>
+      <p class="drop-zone__or">or</p>
+      <label for="file-input" class="btn">Choose File</label>
+      <input type="file" id="file-input" accept=".quiz" hidden>
+      <p id="file-error" class="error" hidden></p>
+    </div>
+
+    <!-- Quiz view: shown when a quiz is loaded -->
+    <div id="quiz-view" hidden>
+      <div id="score-banner" class="score-banner" role="status" hidden></div>
+      <div id="warning-banner" class="warning-banner" role="note" hidden></div>
+
+      <header id="quiz-header">
+        <h1 id="quiz-title"></h1>
+        <p id="quiz-description"></p>
+        <p id="quiz-count"></p>
+      </header>
+
+      <form id="quiz-form">
+        <ol id="question-list"></ol>
+        <div id="quiz-actions">
+          <button type="submit" id="submit-btn" disabled>Submit</button>
+          <button type="button" id="retake-btn" hidden>Retake</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
