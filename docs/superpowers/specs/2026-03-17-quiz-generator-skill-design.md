@@ -24,7 +24,7 @@ A Claude Code superpowers skill that converts existing tests and quizzes into `.
 | Format | Reading Method |
 |--------|---------------|
 | `.txt`, `.md` | Direct file read |
-| `.pdf` | Via `anthropic-skills:pdf` skill |
+| `.pdf` | Via `anthropic-skills:pdf` skill (returns extracted plain text) |
 | `.png`, `.jpg`, `.jpeg`, `.webp` | Claude's built-in vision |
 
 ---
@@ -37,7 +37,7 @@ A Claude Code superpowers skill that converts existing tests and quizzes into `.
 - Question type is **inferred** from structure:
   - Two options "True" / "False" → `[tf]`
   - "Select all that apply" or multiple correct answers marked → `[multi]`
-  - Otherwise → default multiple choice
+  - Otherwise → default multiple choice (no tag — `quiz-parser.js` treats untagged questions as `mc`)
 - Output filename is derived from the source filename unless the user specifies one (e.g. `bio-exam.pdf` → `bio-exam.quiz`)
 - Output is saved to `quizzes/<filename>.quiz`
 
