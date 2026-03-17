@@ -95,5 +95,85 @@ function hideFileError() {
   fileError.textContent = '';
 }
 
-// Rendering, scoring, and retake added in subsequent tasks
-function startQuiz() { /* stub — filled in Task 7 */ }
+// ── Quiz rendering ────────────────────────────────────────────────────────────
+function startQuiz() {
+  renderOrder = shuffle(quizData.questions.map((_, i) => i));
+  renderQuiz();
+}
+
+function renderQuiz() {
+  // Reset state
+  scoreBanner.hidden = true;
+  scoreBanner.className = 'score-banner';
+  retakeBtn.hidden = true;
+  submitBtn.hidden = false;
+  submitBtn.disabled = true;
+  questionList.innerHTML = '';
+
+  // Header
+  quizTitle.textContent = quizData.title;
+  quizDesc.textContent = quizData.description || '';
+  quizCount.textContent = `${quizData.questions.length} question${quizData.questions.length !== 1 ? 's' : ''}`;
+
+  // Warning banner
+  if (quizData.warning) {
+    warningBanner.textContent = `⚠️ ${quizData.warning}`;
+    warningBanner.hidden = false;
+  } else {
+    warningBanner.hidden = true;
+  }
+
+  // Render questions in shuffled order
+  renderOrder.forEach((qIdx, displayIdx) => {
+    const q = quizData.questions[qIdx];
+    const answerOrder = shuffle(q.answers.map((_, i) => i));
+    questionList.appendChild(buildQuestionEl(q, displayIdx + 1, answerOrder));
+  });
+
+  dropZone.hidden = true;
+  quizView.hidden = false;
+  updateSubmitState();
+}
+
+function buildQuestionEl(q, num, answerOrder) {
+  const li = document.createElement('li');
+  li.className = `question question--${q.type} unanswered`;
+  li.dataset.id = q.id;
+
+  const p = document.createElement('p');
+  p.className = 'question__text';
+  p.textContent = `${num}. ${q.text}`;
+  li.appendChild(p);
+
+  const inputType = q.type === 'multi' ? 'checkbox' : 'radio';
+  const groupName = `q${q.id}`;
+
+  answerOrder.forEach(aIdx => {
+    const answer = q.answers[aIdx];
+    const label = document.createElement('label');
+    label.className = 'answer';
+
+    const input = document.createElement('input');
+    input.type = inputType;
+    input.name = groupName;
+    input.value = String(aIdx);
+    input.dataset.correct = String(answer.correct);
+    input.addEventListener('change', updateSubmitState);
+
+    label.appendChild(input);
+    label.appendChild(document.createTextNode(' ' + answer.text));
+    li.appendChild(label);
+  });
+
+  return li;
+}
+
+function updateSubmitState() {
+  let allAnswered = true;
+  questionList.querySelectorAll('.question').forEach(qEl => {
+    const answered = Array.from(qEl.querySelectorAll('input')).some(i => i.checked);
+    qEl.classList.toggle('unanswered', !answered);
+    if (!answered) allAnswered = false;
+  });
+  submitBtn.disabled = !allAnswered;
+}
