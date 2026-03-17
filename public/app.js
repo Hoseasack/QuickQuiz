@@ -53,6 +53,7 @@ function loadFile(file) {
   reader.onload = async e => {
     await submitQuizText(e.target.result);
   };
+  reader.onerror = () => showFileError('Could not read file');
   reader.readAsText(file);
 }
 
@@ -193,7 +194,7 @@ function scoreQuiz() {
     if (scoreQuestion(qEl)) correct++;
   });
 
-  const total = quizData.questions.length;
+  const total = renderOrder.length;
   const pct = Math.round((correct / total) * 100);
   scoreBanner.textContent = `${correct} / ${total} correct (${pct}%)`;
   if (correct === total) scoreBanner.classList.add('score-banner--perfect');
@@ -229,6 +230,6 @@ function scoreQuestion(qEl) {
 
 // ── Retake ────────────────────────────────────────────────────────────────────
 retakeBtn.addEventListener('click', () => {
-  renderOrder = shuffle(renderOrder); // re-shuffle question order
-  renderQuiz();                       // renderQuiz also shuffles answers per question
+  renderOrder = shuffle(quizData.questions.map((_, i) => i));
+  renderQuiz();
 });
