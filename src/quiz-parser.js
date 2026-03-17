@@ -122,4 +122,4 @@ function parseQuiz(text) {
   return { title, description, questions };
 }
 
-module.exports = parseQuiz;
+module.exports = { parseQuiz };
