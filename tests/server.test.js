@@ -40,6 +40,7 @@ test('POST /api/quiz returns 400 for empty body', async () => {
     .send('');
   assert.equal(res.status, 400);
   assert.ok(res.body.error);
+  assert.equal(res.body.error, 'No quiz content received');
 });
 
 test('POST /api/quiz surfaces warning field', async () => {
@@ -56,4 +57,12 @@ warning: AI-generated answers.
     .send(quiz);
   assert.equal(res.status, 200);
   assert.equal(res.body.warning, 'AI-generated answers.');
+});
+
+test('POST /api/quiz returns 400 when Content-Type is not text/plain', async () => {
+  const res = await supertest(app)
+    .post('/api/quiz')
+    .send('# Quiz\n---\n? Q?\n> A\n');
+  assert.equal(res.status, 400);
+  assert.equal(res.body.error, 'No quiz content received');
 });
