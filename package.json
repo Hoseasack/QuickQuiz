@@ -1,0 +1,12 @@
+{
+  "name": "quickquiz",
+  "version": "1.0.0",
+  "description": "A local Mac app for taking quizzes from .quiz files",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
