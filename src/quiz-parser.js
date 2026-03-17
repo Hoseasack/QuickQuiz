@@ -5,7 +5,7 @@
  *
  * @param {string} text - Raw contents of a .quiz file
  * @returns {{ title: string, description: string, questions: Array }}
- * @throws {string} Descriptive error message for malformed input
+ * @throws {Error} Descriptive error message for malformed input
  */
 function parseQuiz(text) {
   const rawLines = text.split(/\r?\n/);
@@ -20,10 +20,11 @@ function parseQuiz(text) {
   }
 
   if (titleLineIndex === -1 || !rawLines[titleLineIndex].trim().startsWith('#')) {
-    throw 'Missing title: first line must start with #';
+    throw new Error('Missing title: first line must start with #');
   }
 
   const title = rawLines[titleLineIndex].trim().slice(1).trim();
+  if (title === '') throw new Error('Title cannot be empty');
 
   // ── 2. Collect preamble lines (between title and first ---) ───────────────
   let description = '';
@@ -103,8 +104,17 @@ function parseQuiz(text) {
 
     // Validate: non-[multi] questions must not have more than one correct answer
     const correctCount = answers.filter(a => a.correct).length;
+
+    if (answers.length === 0) {
+      throw new Error(`Question ${questionNumber} has no answer options`);
+    }
+
     if (type !== 'multi' && correctCount > 1) {
-      throw `Question ${questionNumber} has multiple correct answers but is not tagged [multi]`;
+      throw new Error(`Question ${questionNumber} has multiple correct answers but is not tagged [multi]`);
+    }
+
+    if (correctCount === 0) {
+      throw new Error(`Question ${questionNumber} has no correct answer`);
     }
 
     questions.push({
@@ -116,7 +126,7 @@ function parseQuiz(text) {
   }
 
   if (questions.length === 0) {
-    throw 'No questions found in file';
+    throw new Error('No questions found in file');
   }
 
   return { title, description, questions };
