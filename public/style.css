@@ -1,0 +1,167 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+  margin: 0;
+  padding: 1.5rem 1rem;
+}
+
+#app {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ── Drop zone ─────────────────────────────────────────────────────────────── */
+
+#drop-zone {
+  border: 2px dashed #aaa;
+  border-radius: 10px;
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #fff;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+#drop-zone.drag-over {
+  border-color: #4f46e5;
+  background: #eef2ff;
+}
+
+.drop-zone__heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.drop-zone__or {
+  color: #888;
+  margin: 0.5rem 0;
+}
+
+.btn {
+  display: inline-block;
+  background: #4f46e5;
+  color: #fff;
+  padding: 0.55rem 1.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.error {
+  color: #dc2626;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* ── Banners ───────────────────────────────────────────────────────────────── */
+
+.score-banner {
+  background: #dbeafe;
+  border: 1px solid #3b82f6;
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.score-banner--perfect {
+  background: #dcfce7;
+  border-color: #22c55e;
+}
+
+.warning-banner {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ── Quiz header ───────────────────────────────────────────────────────────── */
+
+#quiz-header {
+  margin-bottom: 1.5rem;
+}
+
+#quiz-title  { margin: 0 0 0.25rem; font-size: 1.6rem; }
+#quiz-description { color: #555; margin: 0 0 0.2rem; }
+#quiz-count  { color: #888; font-size: 0.85rem; margin: 0; }
+
+/* ── Question list ─────────────────────────────────────────────────────────── */
+
+#question-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.question {
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  transition: border-color 0.2s;
+}
+
+/* Continuously highlight unanswered questions */
+.question.unanswered {
+  border-color: #f59e0b;
+}
+
+.question--correct  { border-color: #22c55e; }
+.question--incorrect { border-color: #ef4444; }
+
+.question__text {
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+}
+
+/* ── Answer options ────────────────────────────────────────────────────────── */
+
+.answer {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.answer input { margin-top: 0.2rem; flex-shrink: 0; }
+
+.answer--correct { color: #16a34a; font-weight: 600; }
+.answer--wrong   { color: #dc2626; text-decoration: line-through; }
+
+/* ── Actions ───────────────────────────────────────────────────────────────── */
+
+#quiz-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+button {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#submit-btn { background: #4f46e5; color: #fff; }
+#submit-btn:disabled { background: #a5b4fc; cursor: not-allowed; }
+
+#retake-btn { background: #e5e7eb; color: #374151; }
+#retake-btn:hover { background: #d1d5db; }
