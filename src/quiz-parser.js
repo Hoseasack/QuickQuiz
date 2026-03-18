@@ -4,7 +4,7 @@
  * parseQuiz(text) — Parse a .quiz file into a JSON object.
  *
  * @param {string} text - Raw contents of a .quiz file
- * @returns {{ title: string, description: string, warning: string|null, questions: Array }}
+ * @returns {{ title: string, author: string, description: string, warning: string|null, questions: Array }}
  * @throws {Error} Descriptive error message for malformed input
  */
 function parseQuiz(text) {
@@ -27,6 +27,7 @@ function parseQuiz(text) {
   if (title === '') throw new Error('Title cannot be empty');
 
   // ── 2. Collect preamble lines (between title and first ---) ───────────────
+  let author = '';
   let description = '';
   let warning = null;
   let bodyStartIndex = titleLineIndex + 1;
@@ -36,6 +37,9 @@ function parseQuiz(text) {
     if (trimmed === '---') {
       bodyStartIndex = i + 1;
       break;
+    }
+    if (trimmed.startsWith('author:')) {
+      author = trimmed.slice('author:'.length).trim();
     }
     if (trimmed.startsWith('description:')) {
       description = trimmed.slice('description:'.length).trim();
@@ -133,7 +137,7 @@ function parseQuiz(text) {
     throw new Error('No questions found in file');
   }
 
-  return { title, description, warning, questions };
+  return { title, author, description, warning, questions };
 }
 
 module.exports = { parseQuiz };
