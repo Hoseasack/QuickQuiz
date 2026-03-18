@@ -26,7 +26,9 @@ Quiz files are plain text. Put them in the `quizzes/` folder.
 
 ```
 # Quiz Title
+author: Required
 description: Optional description
+warning: Optional banner warning, used by Claude Code skill
 
 ---
 
@@ -51,7 +53,8 @@ description: Optional description
 
 **Preamble fields:**
 - `# Title` — displayed as the quiz heading (required)
-- `description:` — shown below the title (optional)
+- `author` - shown below the title (required)
+- `description:` — shown below the author (optional)
 - `warning:` — shown as a yellow banner warning the user answers may not be official (optional)
 
 **Question syntax:**
