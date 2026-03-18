@@ -85,7 +85,8 @@ Then provide the path to your source file. The skill will:
 2. Extract all questions and answers verbatim
 3. Detect question types automatically (MC, true/false, multi-select)
 4. If no answer key is found, prompt you to either upload one or use Claude-generated answers (which adds a `warning:` to the output)
-5. Write the `.quiz` file to `quizzes/`
+5. Detect the document author automaticly. If no author is found, the user name will be used. If no user name is provided, Claude will be noted as the author.
+6. Write the `.quiz` file to `quizzes/`
 
 ## Running Tests
 
