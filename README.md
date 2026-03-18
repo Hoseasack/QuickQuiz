@@ -2,6 +2,9 @@
 
 A local web app for taking quizzes from `.quiz` files, plus a Claude skill for converting existing tests and exams into `.quiz` files.
 
+> [!NOTE]
+> This project is heavily assisted using Claude Code. Human oversight is present during the use of artificial inteligence. 
+
 ## Getting Started
 
 **Requirements:** Node.js 18+
@@ -12,6 +15,9 @@ npm start
 ```
 
 Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+> [!TIP]
+> If `npm` outputs errors about `address already in use :::3000`, change the port in `server.js`.
 
 ## How It Works
 
