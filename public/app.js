@@ -12,6 +12,7 @@ const quizView      = document.getElementById('quiz-view');
 const scoreBanner   = document.getElementById('score-banner');
 const warningBanner = document.getElementById('warning-banner');
 const quizTitle     = document.getElementById('quiz-title');
+const quizAuthor    = document.getElementById('quiz-author');
 const quizDesc      = document.getElementById('quiz-description');
 const quizCount     = document.getElementById('quiz-count');
 const quizForm      = document.getElementById('quiz-form');
@@ -113,6 +114,7 @@ function renderQuiz() {
 
   // Header
   quizTitle.textContent = quizData.title;
+  quizAuthor.textContent = `Created by ${quizData.author}`;
   quizDesc.textContent = quizData.description || '';
   quizCount.textContent = `${quizData.questions.length} question${quizData.questions.length !== 1 ? 's' : ''}`;
 
