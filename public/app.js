@@ -19,6 +19,7 @@ const quizForm      = document.getElementById('quiz-form');
 const questionList  = document.getElementById('question-list');
 const submitBtn     = document.getElementById('submit-btn');
 const retakeBtn     = document.getElementById('retake-btn');
+const homeBtn          = document.getElementById('home-btn');
 
 // ── Drag-and-drop ─────────────────────────────────────────────────────────────
 dropZone.addEventListener('dragover', e => {
@@ -235,3 +236,9 @@ retakeBtn.addEventListener('click', () => {
   renderOrder = shuffle(quizData.questions.map((_, i) => i));
   renderQuiz();
 });
+
+// ── Home ────────────────────────────────────────────────────────────────────
+homeBtn.addEventListener('click', () => [
+  dropZone.hidden = false,
+  quizView.hidden = true,
+]);
