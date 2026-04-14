@@ -19,7 +19,7 @@ const quizForm      = document.getElementById('quiz-form');
 const questionList  = document.getElementById('question-list');
 const submitBtn     = document.getElementById('submit-btn');
 const retakeBtn     = document.getElementById('retake-btn');
-const homeBtn          = document.getElementById('home-btn');
+const homeBtn       = document.getElementById('home-btn');
 
 // ── Drag-and-drop ─────────────────────────────────────────────────────────────
 dropZone.addEventListener('dragover', e => {
@@ -41,6 +41,9 @@ dropZone.addEventListener('drop', e => {
 // ── File picker ───────────────────────────────────────────────────────────────
 fileInput.addEventListener('change', () => {
   if (fileInput.files[0]) loadFile(fileInput.files[0]);
+  const file = fileInput.files[0];
+
+
 });
 
 // ── File loading ──────────────────────────────────────────────────────────────
@@ -241,4 +244,7 @@ retakeBtn.addEventListener('click', () => {
 homeBtn.addEventListener('click', () => [
   dropZone.hidden = false,
   quizView.hidden = true,
+  quizData = null,
+  renderOrder = [],
+  fileInput.value = null,
 ]);
