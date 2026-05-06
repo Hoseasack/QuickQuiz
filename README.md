@@ -2,8 +2,19 @@
 
 A local web app for taking quizzes from `.quiz` files, plus a Claude skill for converting existing tests and exams into `.quiz` files.
 
+> [!IMPORTANT]
+> This branch is under active development. Some features may not work and/or bugs may be present.
+
+
 > [!NOTE]
-> This project is heavily assisted using Claude Code. Human oversight is present during the use of artificial inteligence. 
+> This project was heavily assisted using Claude Code. Human oversight was present during the use of artificial inteligence. For more information regarding AI and its use in QuickQuiz, please see `AI.md`.
+
+## Features
+- Portable
+- Lighweight
+- Cross-platform
+- Local and offline by design
+- Light/Dark Mode (**NEW!**)
 
 ## Getting Started
 
