@@ -20,6 +20,12 @@ const questionList  = document.getElementById('question-list');
 const submitBtn     = document.getElementById('submit-btn');
 const retakeBtn     = document.getElementById('retake-btn');
 const homeBtn       = document.getElementById('home-btn');
+// const themeSwt      = document.getElementsByClassName('theme-switch');
+var themeSwt = document.querySelector("input[name=theme]");
+
+
+
+
 
 // ── Drag-and-drop ─────────────────────────────────────────────────────────────
 dropZone.addEventListener('dragover', e => {
@@ -248,3 +254,5 @@ homeBtn.addEventListener('click', () => [
   renderOrder = [],
   fileInput.value = null,
 ]);
+
+// ── Theme Switcher ─────────────────────────────────────────────────────────────
