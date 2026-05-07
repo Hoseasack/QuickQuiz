@@ -7,7 +7,7 @@ A local web app for taking quizzes from `.quiz` files, plus a Claude skill for c
 
 
 > [!NOTE]
-> This project was heavily assisted using Claude Code. Human oversight was present during the use of artificial inteligence. For more information regarding AI and its use in QuickQuiz, please see `AI.md`.
+> This project was heavily assisted using Claude Code. Human oversight was present during the use of artificial inteligence. For more information regarding AI and its use in QuickQuiz, please see [`AI.md`](/AI.md).
 
 ## Features
 - Portable
