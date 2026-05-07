@@ -34,16 +34,29 @@ html:has(#color-scheme-dark:checked) { --darkmode: 1; }
     --text-color: #f5f5f5;
   }
   #drop-zone {
-    --dropzone: #c71e1e;
+    background: #c60a0a;
+    color: #3ee;
   }
 }
+
+
 .toggle-group {
   border: 2px solid #CCC;
   border-radius: 24px;
   inline-size: fit-content;
-  padding: 3px;
+  padding: 1px;
   transition: .4s;
+  grid-area: switch;
+  justify-self: center;
+  align-self: center;
 }
+
+#theme-label {
+  grid-area: label;
+  align-self: self-starts;
+  justify-self: center;
+}
+
 .toggle-group label {
   border-radius: 21px;
   cursor: pointer;
@@ -82,14 +95,11 @@ body {
 
 .header {
   display: grid;
-  align-items: start;
-  justify-content: space-evenly;
-  grid-template-areas:
-    "title  label"
-    "slogan switch";
+  width: auto;
+  grid-template-columns: 1fr 1fr;
+ /* grid-template-areas:
+    "title  switch";*/
   border: 2px solid green;
-  align-items: center;
-  justify-content: space-evenly;
   margin-left: 3%;
   margin-right: 3%;
 }
@@ -99,23 +109,22 @@ body {
 }
 #app-title {
   grid-area: title;
+  justify-self: center;
 }
 #slogan {
   font-style: italic;
   grid-area: slogan;
-  justify-content: start;
 }
 
 
 /* ── Drop zone ─────────────────────────────────────────────────────────────── */
 
 #drop-zone {
-  border: 2px dashed #aaa;
+  border: 3px dashed #8e8d8d;
   border-radius: 10px;
   padding: 4rem 2rem;
   text-align: center;
-  --dropzone: #ff0000;
-  background: var(--dropzone);
+  /*background: #dbdbdb;*/
   transition: border-color 0.15s, background 0.15s;
   margin: 2em
 }
@@ -123,6 +132,8 @@ body {
 #drop-zone.drag-over {
   border-color: #4f46e5;
   background: #eef2ff;
+  box-shadow: 0 0 10px #4f46e5;
+  transition: 0.4s;
 }
 
 .drop-zone__heading {
@@ -160,7 +171,8 @@ body {
   font-weight: 600;
   text-decoration: none;
   transition-duration: 0.4s;
-  box-shadow:0 10px 16px 0 rgba(65, 65, 65, 0.6)
+  /*box-shadow:0 10px 16px 0 rgba(65, 65, 65, 0.6)*/
+  box-shadow: 0 0 10px #0f06c0
 }
 
 .btn:focus-visible {
@@ -171,8 +183,9 @@ body {
 
 .error {
   color: #dc2626;
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  text-decoration: solid;
 }
 
 /* ── Banners ───────────────────────────────────────────────────────────────── */

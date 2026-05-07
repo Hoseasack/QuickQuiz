@@ -11,8 +11,8 @@
 
   <!-- Header: shown always -->
   <div class="header">
-    <div id="app-title"><h1>QuickQuiz</h1></div>
-    <div id="slogan"><p>A better way to quiz!</p></div>
+    <div id="app-title"><h1>QuickQuiz</h1><p>A better way to quiz!</p></div>
+    <div id="slogan"></div>
 <!--    <div id="theme-label"><p>Theme Selector</p></div>
     <div class="theme-switch"> 
       <label class="switch">
@@ -20,11 +20,15 @@
         <span class="slider round"></span>
       </label>
     </div> -->
-    <fieldset class="toggle-group" id="colorScheme">
-      <label><input type="radio" name="color-scheme" id="color-scheme-light" value="0" data-sr>Light</label>
-      <label><input type="radio" name="color-scheme" value="auto" checked data-sr> Auto</label>
-      <label><input type="radio" name="color-scheme" id="color-scheme-dark" value="1" data-sr> Dark</label>
-    </fieldset>
+
+      
+      <fieldset class="toggle-group" id="colorScheme">
+        <h4 id="theme-label">Theme Selector</h4>
+        <label><input type="radio" name="color-scheme" id="color-scheme-light" value="0" data-sr>Light</label>
+        <label><input type="radio" name="color-scheme" value="auto" checked data-sr> Auto</label>
+        <label><input type="radio" name="color-scheme" id="color-scheme-dark" value="1" data-sr> Dark</label>
+      </fieldset>
+
   </div>
 
   <div id="app">
