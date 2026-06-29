@@ -27,7 +27,6 @@ From the source material, extract:
 
 **Do not rephrase, summarise, clean up formatting, or alter any text in any way.**
 
-**Do not include letter prefixes before the answers. E.g. A. B) C- D:**
 
 For each question, determine its type:
 - Two options reading "True" and "False" → tag as `[tf]`
