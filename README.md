@@ -94,6 +94,20 @@ Then provide the path to your source file. The skill will:
 5. Detect the document author automaticly. If no author is found, the user name will be used. If no user name is provided, Claude will be noted as the author.
 6. Write the `.quiz` file to `quizzes/`
 
+## Roadmap
+
+### Up Next
+- [ ] Dark/light mode switching - In progess
+- [ ] Timer/countdown (time read from file) - In progess
+- [ ] UI/UX improvements (both aesthetics and accessibility) - In progress
+
+### Near Future
+- [ ] Encryption support for questions and answers (for sharing secure/sensitive/copyrighted material)
+
+### Maybe One Day...
+- [ ] Image support
+- [ ] Manual quiz creator (non-AI)
+
 ## Running Tests
 
 ```bash
