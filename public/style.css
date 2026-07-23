@@ -114,15 +114,20 @@ body {
   border-radius: 10px;
   padding: 4rem 2rem;
   text-align: center;
-  --dropzone: #ff0000;
+  --dropzone: #e9e9e9;
   background: var(--dropzone);
-  transition: border-color 0.15s, background 0.15s;
-  margin: 2em
+  transition: border-color 0.4s, background 0.4s;
+  margin: 2em;
+  transition-duration: 0.4s;
 }
 
 #drop-zone.drag-over {
   border-color: #4f46e5;
   background: #eef2ff;
+  transition: box-shadow 0.4s;
+  box-shadow: 0 0 10px 2px #4f46e5;
+  transition-duration: 0.4s;
+
 }
 
 .drop-zone__heading {
@@ -160,7 +165,7 @@ body {
   font-weight: 600;
   text-decoration: none;
   transition-duration: 0.4s;
-  box-shadow:0 10px 16px 0 rgba(65, 65, 65, 0.6)
+  box-shadow:0 0 16px 5px rgba(65, 65, 65, 0.6)
 }
 
 .btn:focus-visible {
