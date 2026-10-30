@@ -34,7 +34,10 @@ html:has(#color-scheme-dark:checked) { --darkmode: 1; }
     --text-color: #f5f5f5;
   }
   #drop-zone {
-    --dropzone: #c71e1e;
+    --dropzone: #5c5c5c;
+  }
+  .question {
+    --background-color-question: #2a2a2a;
   }
 }
 .toggle-group {
@@ -114,7 +117,6 @@ body {
   border-radius: 10px;
   padding: 4rem 2rem;
   text-align: center;
-  --dropzone: #e9e9e9;
   background: var(--dropzone);
   transition: border-color 0.4s, background 0.4s;
   margin: 2em;
@@ -185,11 +187,14 @@ body {
 .score-banner {
   background: #dbeafe;
   border: 1px solid #3b82f6;
+  color: #222;
   border-radius: 8px;
   padding: 0.85rem 1.1rem;
   margin-bottom: 1rem;
   font-weight: 700;
   font-size: 1.1rem;
+  align-items: center;
+  text-align: center;
 }
 
 .score-banner--perfect {
@@ -199,6 +204,7 @@ body {
 
 .warning-banner {
   background: #fef3c7;
+  color: #222;
   border: 1px solid #f59e0b;
   border-radius: 8px;
   padding: 1rem;
@@ -215,7 +221,7 @@ body {
 }
 
 #quiz-title  { margin: 0 0 0.25rem; font-size: 1.6rem; }
-#quiz-description { color: #555; margin: 0 0 0.2rem; }
+#quiz-description { margin: 0 0 0.2rem; }
 #quiz-count  { color: #888; font-size: 0.85rem; margin: 0; }
 
 /* ── Question list ─────────────────────────────────────────────────────────── */
@@ -230,7 +236,7 @@ body {
 }
 
 .question {
-  background: #fff;
+  background-color: var(--background-color-question);
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   padding: 1rem 1.25rem;
