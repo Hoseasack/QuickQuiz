@@ -20,8 +20,7 @@ const questionList  = document.getElementById('question-list');
 const submitBtn     = document.getElementById('submit-btn');
 const retakeBtn     = document.getElementById('retake-btn');
 const homeBtn       = document.getElementById('home-btn');
-// const themeSwt      = document.getElementsByClassName('theme-switch');
-var themeSwt = document.querySelector("input[name=theme]");
+const quizTime      = document.getElementById("quiz-time");
 
 
 
@@ -107,6 +106,9 @@ function hideFileError() {
   fileError.textContent = '';
 }
 
+
+
+
 // ── Quiz rendering ────────────────────────────────────────────────────────────
 function startQuiz() {
   renderOrder = shuffle(quizData.questions.map((_, i) => i));
@@ -121,12 +123,14 @@ function renderQuiz() {
   submitBtn.hidden = false;
   submitBtn.disabled = true;
   questionList.innerHTML = '';
+  quizTime.hidden = false;
 
   // Header
   quizTitle.textContent = quizData.title;
   quizAuthor.textContent = `Created by ${quizData.author}`;
   quizDesc.textContent = quizData.description || '';
   quizCount.textContent = `${quizData.questions.length} question${quizData.questions.length !== 1 ? 's' : ''}`;
+  quizTime.textContent =  quizData.time;
 
   // Warning banner
   if (quizData.warning) {
@@ -135,6 +139,12 @@ function renderQuiz() {
   } else {
     warningBanner.hidden = true;
   }
+
+  //if (quizData.time) {
+ //     countDown.hidden = false;
+ // } else {
+//      countDown.hidden = true;
+//  }
 
   // Render questions in shuffled order
   renderOrder.forEach((qIdx, displayIdx) => {
@@ -190,6 +200,28 @@ function updateSubmitState() {
   });
   submitBtn.disabled = !allAnswered;
 }
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+window.onload = function () {
+    var Minutes = quizData.time / 1060;
+        display = document.querySelector('#time');
+    startTimer(Minutes, display);
+};
 
 // ── Scoring ───────────────────────────────────────────────────────────────────
 quizForm.addEventListener('submit', e => {
